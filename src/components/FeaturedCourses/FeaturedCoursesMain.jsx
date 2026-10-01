@@ -1,0 +1,124 @@
+import React, { useState } from "react";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import FeaturedCoursesCard from "./FeaturedCoursesCard";
+import { motion } from "motion/react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
+
+const FeaturedCoursesMain = () => {
+  const [swiper, setSwiper] = useState(null);
+
+  return (
+    <motion.div
+      initial={{ y: 100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 100 }}
+      transition={{ duration: 1 }}
+      className="w-full rounded-3xl bg-[#03c5870d] h-fit mt-5 flex flex-col items-center"
+    >
+      <h1 className="text-center text-2xl font-bold pt-5">Featured Courses</h1>
+
+      <p className="text-center w-[85%] pt-3 text-[#595959]">
+        Elevate Your Skills and Land Your Dream Job - Whether you prefer the
+        convenience of learning from home or the advantages of direct sessions
+        on campus with our expert instructors, we've got you covered!
+      </p>
+
+      <div className="pt-5 w-full flex items-center justify-center">
+        <button
+          onClick={() => swiper?.slidePrev()}
+          className="hidden relative md:left-2 lg:left-12 md:flex shrink-0 w-16 h-16 justify-center items-center text-4xl z-10 bg-[#ffffffcc] shadow-2xl shadow-[#00000012] rounded-full"
+        >
+          <IoIosArrowBack />
+        </button>
+
+        <div className="w-full overflow-hidden ">
+          <Swiper
+            className="w-[90%] "
+            modules={[Autoplay]}
+            spaceBetween={20}
+            onSwiper={(swiper) => setSwiper(swiper)}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1.3,
+                centeredSlides: true,
+              },
+              768: {
+                slidesPerView: 2,
+                centeredSlides: false,
+              },
+              1024: {
+                slidesPerView: 3,
+                centeredSlides: false,
+              },
+              1180: {
+                slidesPerView: 3,
+                centeredSlides: false,
+              },
+            }}
+          >
+            {/* <PrevButton />
+            <NextButton /> */}
+            <SwiperSlide>
+              <div className="flex justify-center w-full">
+                <FeaturedCoursesCard />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="flex justify-center w-full">
+                <FeaturedCoursesCard />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex justify-center w-full">
+                <FeaturedCoursesCard />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex justify-center w-full">
+                <FeaturedCoursesCard />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex justify-center w-full">
+                <FeaturedCoursesCard />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex justify-center w-full">
+                <FeaturedCoursesCard />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex justify-center w-full">
+                <FeaturedCoursesCard />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex justify-center w-full">
+                <FeaturedCoursesCard />
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+
+        <button
+          onClick={() => swiper?.slideNext()}
+          className="hidden relative md:right-2 lg:right-12 md:flex shrink-0 w-16 h-16 justify-center items-center text-4xl z-10 bg-[#ffffffcc] shadow-2xl shadow-[#00000012] rounded-full"
+        >
+          <IoIosArrowForward />
+        </button>
+      </div>
+    </motion.div>
+  );
+};
+
+export default FeaturedCoursesMain;

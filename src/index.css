@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@plugin "@iconify/tailwind4";
+
+@theme {
+  --animate-infinite-scroll: infinite-scroll 30s linear infinite;
+  --animate-infinite-scrollX: infinite-scrollX 30s linear infinite;
+
+  @keyframes infinite-scroll {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes infinite-scrollX {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@theme {
+  --breakpoint-mobile: 400px;
+  --breakpoint-desk: 1100px;
+}
